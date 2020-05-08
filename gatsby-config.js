@@ -34,12 +34,15 @@ module.exports = {
         path: `${__dirname}/src/posts/`,
       },
     },
+    `gatsby-remark-images`,
     {
       resolve: `gatsby-plugin-mdx`,
       options: {
-        extensions: ['.mdx', '.md'],
+        mediaTypes: [`text/markdown`, `text/x-markdown`],
+        extensions: [".mdx", ".md"],
+
         gatsbyRemarkPlugins: [{
-            resolve: 'gatsby-remark-images',
+            resolve: "gatsby-remark-images",
             options: {
               maxWidth: 1035,
               sizeByPixelDensity: true,
@@ -48,9 +51,21 @@ module.exports = {
           {
             resolve: `gatsby-remark-prismjs`,
             options: {
-              classPrefix: 'language-',
+              classPrefix: "language-",
               inlineCodeMarker: null,
               aliases: {},
+            },
+          },
+          {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+              plugins: [{
+                resolve: `gatsby-remark-copy-linked-files`,
+                options: {
+                  destinationDir: `assets`,
+                  ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`],
+                },
+              }, ],
             },
           },
         ],

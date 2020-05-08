@@ -11,7 +11,7 @@ exports.createPages = ({
     createPage
   } = actions
 
-  const blogPost = path.resolve(`./src/templates/blog-post.jsx`)
+  const blogPost = path.resolve(`./src/templates/blog-post.tsx`)
   return graphql(
     `
       {
@@ -45,7 +45,7 @@ exports.createPages = ({
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
-
+      console.log("CreatePage =>", post.node.fields.slug)
       createPage({
         path: post.node.fields.slug,
         component: blogPost,
@@ -69,14 +69,16 @@ exports.onCreateNode = ({
   } = actions
 
   if (node.internal.type === `Mdx`) {
-    const value = createFilePath({
+    const slug = createFilePath({
       node,
-      getNode
+      getNode,
+      basePath: `contents`,
     })
+
     createNodeField({
-      name: `slug`,
       node,
-      value,
+      name: `slug`,
+      value: slug,
     })
   }
 }
