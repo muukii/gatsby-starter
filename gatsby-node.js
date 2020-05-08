@@ -75,6 +75,8 @@ exports.onCreateNode = ({
       basePath: `contents`,
     })
 
+    console.log("slug=>", slug)
+
     createNodeField({
       node,
       name: `slug`,

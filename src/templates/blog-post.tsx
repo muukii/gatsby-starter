@@ -1,9 +1,16 @@
 import React from "react"
+import { MDXProvider } from "@mdx-js/react"
 import { Link, graphql, PageProps } from "gatsby"
 import { MDXRenderer } from "gatsby-plugin-mdx"
+import Picker from "../components/Picker"
+import { Video } from "../components/Video"
 
-import Layout from "../components/Layout"
 import SEO from "../components/seo"
+
+const availableComponents = {
+  Picker,
+  Video,
+}
 
 type Props = {
   data: any
@@ -20,7 +27,9 @@ export default (props: Props) => {
   return (
     <div>
       <SEO title={post.frontmatter.title} /> <h1> {post.frontmatter.title} </h1>{" "}
-      <MDXRenderer children={body} />
+      <MDXProvider components={availableComponents}>
+        <MDXRenderer children={body} />
+      </MDXProvider>
       <ul
         style={{
           display: `flex`,

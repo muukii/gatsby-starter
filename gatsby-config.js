@@ -31,7 +31,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `posts`,
-        path: `${__dirname}/src/posts/`,
+        path: `${__dirname}/src/contents`,
       },
     },
     `gatsby-remark-images`,
@@ -57,15 +57,9 @@ module.exports = {
             },
           },
           {
-            resolve: `gatsby-transformer-remark`,
+            resolve: `gatsby-remark-copy-linked-files`,
             options: {
-              plugins: [{
-                resolve: `gatsby-remark-copy-linked-files`,
-                options: {
-                  destinationDir: `assets`,
-                  ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`],
-                },
-              }, ],
+              ignoreFileExtensions: [`png`, `jpg`, `jpeg`, `bmp`, `tiff`],
             },
           },
         ],
