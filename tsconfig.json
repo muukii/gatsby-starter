@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "strict": true,
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitReturns": true,
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "removeComments": true,
+    "jsx": "react",
+    "lib": ["dom", "es2017"],
+    "baseUrl": "./",
+    "paths": {
+      "src/*": ["src/*"]
+    }
+  },
+  "include": ["./src/**/*"]
+}

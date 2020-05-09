@@ -5,5 +5,5 @@ type Props = {
 }
 
 export const Video = (props: Props) => {
-  return <video src={props.src}>{props.children}</video>
+  return <video src={props.src} />
 }
