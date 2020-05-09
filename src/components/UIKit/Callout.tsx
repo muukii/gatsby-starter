@@ -1,5 +1,5 @@
 import React from "react"
-import { Wrapper, HStack, Color, ZStack, ZStackBox, Box } from "../layoutbox"
+import { Wrapper, HStack, Color, ZStack, ZStackBox, Box } from "./layoutbox"
 
 type CalloutProps = {
   emoji: string | "⚠️"
